@@ -1,0 +1,78 @@
+{
+  "name": "bank-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "bank-app",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "rm -rf public && rm -rf .cache && gatsby build",
+    "tsc": "tsc",
+    "lint": "tslint -p .",
+    "prettier": "prettier --write 'src/**'",
+    "gatsby": "gatsby",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-spread": "7.16.7",
+    "gatsby": "4.12.1",
+    "gatsby-plugin-sass": "^5.12.1",
+    "mobx": "6.5.0",
+    "mobx-react-lite": "3.3.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sass": "^1.57.1",
+    "typescript": "^3.1.6",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "7.17.9",
+    "@types/jest": "^23.3.9",
+    "@types/react": "18.0.6",
+    "@types/react-dom": "18.0.2",
+    "@types/uuid": "^9.0.0",
+    "babel-jest": "27.5.1",
+    "babel-preset-gatsby": "2.12.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
+    "prettier": "1.15.2",
+    "react-test-renderer": "17.0.2",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.16.0",
+    "tslint-react": "^3.6.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*\\.([tj]sx?)|(\\.|/)(test|spec))\\.([tj]sx?)$",
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
+      ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/__mocks__/fileMock.js"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testPathIgnorePatterns": [
+      "node_modules",
+      ".cache"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(gatsby)/)"
+    ],
+    "globals": {
+      "__PATH_PREFIX__": ""
+    },
+    "setupFiles": [
+      "<rootDir>/jest/loadershim.js"
+    ]
+  }
+}
