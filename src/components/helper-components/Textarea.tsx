@@ -1,20 +1,33 @@
+import TextField, { BaseTextFieldProps } from '@mui/material/TextField';
 import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useRef } from 'react';
 import IGetterSetter from '../../helpers/interfaces/IGetterSetter';
+import './Textarea.scss';
 
-const Textarea = ({ title, bind, required }: { title: string; bind: IGetterSetter<string>; required?: boolean }) => {
+interface ITextarea extends BaseTextFieldProps {
+  title: string;
+  bind: IGetterSetter<string>;
+  required?: boolean;
+  type?: 'text' | 'tel' | 'email' | 'password';
+  customRef?: React.Ref<any> | undefined;
+}
+
+const Textarea = (props: ITextarea) => {
+  const reference = useRef(props.customRef);
   return (
     <div className='textarea-wrapper'>
-      <div className='textarea-title-wrapper'>
-        <label className='textarea-title'>{title}</label>
-        {required ? <i className='required-star'>*</i> : <></>}
-      </div>
-      <textarea
-        value={bind.get}
+      <TextField
+        multiline
+        minRows={4}
+        maxRows={4}
+        // variant='standard'
+        label={props.title}
+        required={props.required || false}
+        inputRef={reference.current}
+        value={props.bind.get}
         onChange={(e) => {
-          bind.set(e.target.value);
+          props.bind.set(e.target.value);
         }}
-        {...{ required }}
       />
     </div>
   );

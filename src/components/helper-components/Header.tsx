@@ -1,6 +1,8 @@
 import { Link } from 'gatsby';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
+import Logo from '../../assets/images/logo.svg';
+import './Header.scss';
 
 const Header = ({ activePageIndex }: { activePageIndex: 0 | 1 | 2 | 3 | 4 | 5 }) => {
   const navBarItems: { index: number; title: string; link: string }[] = [
@@ -13,7 +15,9 @@ const Header = ({ activePageIndex }: { activePageIndex: 0 | 1 | 2 | 3 | 4 | 5 })
   return (
     <div className='header-wrapper'>
       <div className='header-logo-container'>
-        <Link to='/home'>LOGO</Link>
+        <Link to='/home'>
+          <img src={Logo} />
+        </Link>
       </div>
       <div className='header-navbar-container'>
         {navBarItems.map((item) => (

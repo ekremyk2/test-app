@@ -4,7 +4,7 @@ import Header from '../components/helper-components/Header';
 
 const Works = () => {
   return (
-    <div className='page-wrapper'>
+    <div className='page work'>
       <Header activePageIndex={2} />
       <div className='page-content-wrapper'>
         <div>

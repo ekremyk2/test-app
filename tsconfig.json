@@ -10,5 +10,5 @@
     "experimentalDecorators": true,
     "esModuleInterop": true
   },
-  "include": ["src"]
+  "include": ["src", "src/helpers/declarations/custom.d.ts"]
 }

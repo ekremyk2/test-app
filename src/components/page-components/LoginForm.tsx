@@ -1,3 +1,6 @@
+import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
 import { useContext, useEffect } from 'react';
@@ -10,12 +13,12 @@ const LoginForm = ({
   onSubmit,
 }: {
   form: { UserName: IGetterSetter<string>; PassWord: IGetterSetter<string>; RememberMe: IGetterSetter<boolean> };
-  onSubmit: (event: React.FormEvent<HTMLDivElement>) => void;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }) => {
   const [userNameRef, setUserNameRef] = useState<HTMLInputElement | null>(null);
   const [passwordRef, setPasswordRef] = useState<HTMLInputElement | null>(null);
 
-  const handleSubmit = (event: React.FormEvent<HTMLDivElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
     if (Controls.IsStringEmptyNullOrUndefined(form.UserName.get) && userNameRef) {
@@ -29,8 +32,8 @@ const LoginForm = ({
 
   return (
     <div className='login-wrapper'>
-      <div className='login-container' onSubmit={handleSubmit}>
-        <form action='#'>
+      <div className='login-container'>
+        <form action='#' onSubmit={handleSubmit}>
           <div className='login-header'>
             <p>{`Hoş Geldiniz!`}</p>
             <p>{`Lütfen Giriş Yapın`}</p>
@@ -39,7 +42,6 @@ const LoginForm = ({
             <Textbox
               type='text'
               customRef={(current) => setUserNameRef(current)}
-              placeholder='Kullanıcı Adınız...'
               title={'Username'}
               bind={form.UserName}
             />
@@ -48,22 +50,21 @@ const LoginForm = ({
             <Textbox
               type='password'
               customRef={(current) => setPasswordRef(current)}
-              placeholder='********'
               title={'Password'}
               bind={form.PassWord}
             />
           </div>
           <div className='login-remember-me'>
-            <input
-              type='checkbox'
-              id='rememberMe'
-              checked={form.RememberMe.get}
-              onChange={(e) => form.RememberMe.set(e.target.checked)}
+            <FormControlLabel
+              control={
+                <Checkbox checked={form.RememberMe.get} onChange={(e) => form.RememberMe.set(e.target.checked)} />
+              }
+              label={`Beni Hatırla`}
+              labelPlacement='end'
             />
-            <label htmlFor='rememberMe'>{`Beni Hatırla`}</label>
           </div>
           <div className='login-submit'>
-            <input type='submit' value={`Giriş`} />
+            <Button variant='contained' type='submit'>{`Giriş`}</Button>
           </div>
         </form>
       </div>

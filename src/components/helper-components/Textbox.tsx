@@ -1,14 +1,16 @@
+import { TextField, BaseTextFieldProps } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import React, { ClassAttributes, createRef, InputHTMLAttributes, useRef } from 'react';
 import { Controls } from '../../helpers/functions/Controls';
 import IGetterSetter from '../../helpers/interfaces/IGetterSetter';
+import './Textbox.scss';
 
-interface ITextbox extends InputHTMLAttributes<HTMLInputElement> {
+interface ITextbox extends BaseTextFieldProps {
   title: string;
   bind: IGetterSetter<string>;
   required?: boolean;
   type?: 'text' | 'tel' | 'email' | 'password';
-  customRef?: React.LegacyRef<HTMLInputElement> | undefined;
+  customRef?: React.Ref<any> | undefined;
 }
 
 const Textbox = (props: ITextbox) => {
@@ -16,23 +18,15 @@ const Textbox = (props: ITextbox) => {
 
   return (
     <div className='textbox-wrapper'>
-      {Controls.IsStringEmptyNullOrUndefined(props.placeholder) ? (
-        <div className='textbox-title-wrapper'>
-          <label className='textbox-title'>{props.title}</label>
-          {props.required ? <i className='required-star'>*</i> : <></>}
-        </div>
-      ) : (
-        <></>
-      )}
-      <input
-        type={props.type || 'text'}
+      <TextField
+        // variant='standard'
+        label={props.title}
+        required={props.required || false}
+        inputRef={reference.current}
         value={props.bind.get}
         onChange={(e) => {
           props.bind.set(e.target.value);
         }}
-        ref={reference}
-        required={props.required || false}
-        {...{ props }}
       />
     </div>
   );

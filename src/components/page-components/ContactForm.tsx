@@ -1,9 +1,10 @@
+import FormControl from '@mui/material/FormControl';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import IGetterSetter from '../../helpers/interfaces/IGetterSetter';
-import Dropdownlist from './Dropdownlist';
-import Textarea from './Textarea';
-import Textbox from './Textbox';
+import Dropdownlist from '../helper-components/Dropdownlist';
+import Textarea from '../helper-components/Textarea';
+import Textbox from '../helper-components/Textbox';
 
 const ContactForm = ({
   onSubmit,
@@ -23,7 +24,7 @@ const ContactForm = ({
     <div className='contact-form-wrapper'>
       <div className='contact-form-title'>{`Contact Form`}</div>
       <div className='contact-form-container' onSubmit={onSubmit}>
-        <form>
+        <FormControl fullWidth>
           <Textbox title='İsim Soyisim' bind={form.NameSurname} required />
           <Textbox title='Company Name' bind={form.CompanyName} required />
           <Dropdownlist
@@ -41,7 +42,7 @@ const ContactForm = ({
           <Textbox type='email' title='E-Mail' bind={form.EMail} required />
           <Textarea title='Message' bind={form.Message} required />
           <button className='contact-form-submit' type='submit'>{`Get in Touch...`}</button>
-        </form>
+        </FormControl>
       </div>
     </div>
   );

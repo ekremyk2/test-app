@@ -42,7 +42,7 @@ export class LoginStore extends PageStoreBase implements IPageStore {
     },
   };
 
-  @action OnSubmit: (event: React.FormEvent<HTMLDivElement>) => void = (event) => {
+  @action OnSubmit: (event: React.FormEvent<HTMLFormElement>) => void = (event) => {
     if (this.LoginForm.UserName.get !== 'innovance' || this.LoginForm.PassWord.get !== '123')
       alert('Yanlış Kullanıcı Adı veya Şifre');
     else {

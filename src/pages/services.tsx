@@ -4,7 +4,7 @@ import Header from '../components/helper-components/Header';
 
 const Services = () => {
   return (
-    <div className='page-wrapper'>
+    <div className='page services'>
       <Header activePageIndex={1} />
       <div className='page-content-wrapper'>
         <div>

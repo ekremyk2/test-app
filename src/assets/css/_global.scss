@@ -1,15 +1,12 @@
+:root {
+  --header-safe-space: 160px;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
-  background: linear-gradient(
-    215deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(181, 48, 198, 1) 0%,
-    rgba(173, 55, 201, 1) 0%,
-    rgba(232, 121, 255, 1) 0%,
-    rgba(82, 226, 255, 1) 100%
-  );
+  background: #fffae7;
   display: block;
 }
 
@@ -20,6 +17,9 @@ body {
 }
 
 .page {
+  .page-content-wrapper {
+    margin-top: var(--header-safe-space);
+  }
   &.login {
     width: 100vw;
     min-height: 100vh;
@@ -28,20 +28,22 @@ body {
 
     .login-wrapper {
       width: 400px;
-      height: 400px;
+      height: fit-content;
+      padding: 35px 20px;
       background-color: #fff;
-      border-radius: 10%;
+      border-radius: 20px;
       display: grid;
       place-items: center;
-      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+      box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
       .login-container {
         > form {
           display: grid;
-          grid-template-rows: 3fr 1fr 1fr 1fr;
+          grid-template-rows: 1.5fr 1fr 1fr 1fr;
 
           .login-header {
             display: grid;
             place-items: center;
+            align-content: center;
             p {
               line-height: 0;
 
