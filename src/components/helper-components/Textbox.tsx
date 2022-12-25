@@ -1,11 +1,10 @@
-import { TextField, BaseTextFieldProps } from '@mui/material';
+import { StandardTextFieldProps, TextField } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import React, { ClassAttributes, createRef, InputHTMLAttributes, useRef } from 'react';
-import { Controls } from '../../helpers/functions/Controls';
+import React, { useRef } from 'react';
 import IGetterSetter from '../../helpers/interfaces/IGetterSetter';
 import './Textbox.scss';
 
-interface ITextbox extends BaseTextFieldProps {
+interface ITextbox extends StandardTextFieldProps {
   title: string;
   bind: IGetterSetter<string>;
   required?: boolean;
@@ -27,6 +26,7 @@ const Textbox = (props: ITextbox) => {
         onChange={(e) => {
           props.bind.set(e.target.value);
         }}
+        {...props}
       />
     </div>
   );

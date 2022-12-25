@@ -1,6 +1,7 @@
 import { navigate } from 'gatsby';
 import { observable, action, makeObservable } from 'mobx';
 import IGetterSetter from '../../helpers/interfaces/IGetterSetter';
+import { LoginManager } from '../../helpers/LoginManager';
 import { IPageStore, PageStoreBase } from '../core/PageStoreBase';
 import { _RootStore } from '../Store';
 
@@ -43,10 +44,12 @@ export class LoginStore extends PageStoreBase implements IPageStore {
   };
 
   @action OnSubmit: (event: React.FormEvent<HTMLFormElement>) => void = (event) => {
-    if (this.LoginForm.UserName.get !== 'innovance' || this.LoginForm.PassWord.get !== '123')
+    event.preventDefault();
+    if (this.LoginForm.UserName.get !== 'innovance' || this.LoginForm.PassWord.get !== '123') {
       alert('Yanlış Kullanıcı Adı veya Şifre');
-    else {
-      this.isLoggedin.set(true);
+      LoginManager.LoginFailed();
+    } else {
+      LoginManager.LoginSuccess();
       navigate('/home');
     }
   };

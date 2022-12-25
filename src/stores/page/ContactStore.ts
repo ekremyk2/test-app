@@ -1,4 +1,3 @@
-import { navigate } from 'gatsby';
 import { observable, action, makeObservable } from 'mobx';
 import IGetterSetter from '../../helpers/interfaces/IGetterSetter';
 import { IPageStore, PageStoreBase } from '../core/PageStoreBase';
@@ -17,6 +16,7 @@ export class ContactStore extends PageStoreBase implements IPageStore {
     EMail: IGetterSetter<string>;
     Message: IGetterSetter<string>;
     PhoneNumber: IGetterSetter<string>;
+    clearForm: () => void;
   } = {
     CompanyName: {
       get: '',
@@ -54,9 +54,21 @@ export class ContactStore extends PageStoreBase implements IPageStore {
         this.Form.PhoneNumber.get = input || '';
       },
     },
+    clearForm: () => {
+      this.Form.CompanyName.get = '';
+      this.Form.CompanyType.get = '';
+      this.Form.EMail.get = '';
+      this.Form.Message.get = '';
+      this.Form.NameSurname.get = '';
+      this.Form.PhoneNumber.get = '';
+    },
   };
 
-  @action OnSubmit: (event: React.FormEvent<HTMLDivElement>) => void = (event) => {};
+  @action OnSubmit: (event: React.FormEvent<HTMLFormElement>) => void = (event) => {
+    event.preventDefault();
+    alert('Sent Succesfully!');
+    this.Form.clearForm();
+  };
 
   @action Load = () => {
     this.base.Load();

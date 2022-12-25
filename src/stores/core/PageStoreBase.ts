@@ -1,4 +1,4 @@
-import { navigate } from 'gatsby';
+import { LoginManager } from '../../helpers/LoginManager';
 import { _RootStore } from '../Store';
 import { StoreBase } from './StoreBase';
 
@@ -17,8 +17,9 @@ export class PageStoreBase extends StoreBase implements IPageStore {
 
   protected base: { Load: () => Promise<void>; Reset: () => Promise<void> } = {
     Load: async () => {
-      if (!this.rootStore.Page.LoginStore.isLoggedin.get) {
-        navigate('/login');
+      debugger;
+      if (LoginManager.IsLoginNeeded()) {
+        LoginManager.LogOut();
       }
     },
     Reset: async () => {},

@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import Header from '../components/helper-components/Header';
 import ContactForm from '../components/page-components/ContactForm';
 import { RootStoreContext } from '../stores/Store';
+import Lorem from '../components/helper-components/Lorem';
 
 const Contact = () => {
   const rootStore = useContext(RootStoreContext);
@@ -17,6 +18,7 @@ const Contact = () => {
     <div className='page contact'>
       <Header activePageIndex={5} />
       <div className='page-content-wrapper'>
+        <Lorem />
         <ContactForm
           onSubmit={Store.OnSubmit}
           form={{

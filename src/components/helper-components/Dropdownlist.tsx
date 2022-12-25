@@ -1,8 +1,6 @@
-import { BaseTextFieldProps, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { BaseTextFieldProps, MenuItem, TextField } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import React, { useRef, useState} from 'react';
-import { v4 } from 'uuid';
-import { Controls } from '../../helpers/functions/Controls';
+import React, { useRef} from 'react';
 import IGetterSetter from '../../helpers/interfaces/IGetterSetter';
 import './Dropdownlist.scss';
 

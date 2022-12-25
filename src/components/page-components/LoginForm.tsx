@@ -3,7 +3,6 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
-import { useContext, useEffect } from 'react';
 import { Controls } from '../../helpers/functions/Controls';
 import IGetterSetter from '../../helpers/interfaces/IGetterSetter';
 import Textbox from '../helper-components/Textbox';

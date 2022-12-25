@@ -11,6 +11,7 @@ const Header = ({ activePageIndex }: { activePageIndex: 0 | 1 | 2 | 3 | 4 | 5 })
     { index: 3, title: 'About Us', link: '/about-us' },
     { index: 4, title: 'Blog', link: '/blog' },
     { index: 5, title: 'Contact', link: '/contact' },
+    { index: 6, title: 'Logout', link: '/login' },
   ];
   return (
     <div className='header-wrapper'>
