@@ -3,4 +3,5 @@ module.exports = {
     title: 'Gatsby MobX starter',
   },
   plugins: ['gatsby-plugin-typescript', 'gatsby-plugin-sass'],
+  pathPrefix: '/test-app',
 };
