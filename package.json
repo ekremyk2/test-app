@@ -1,8 +1,9 @@
 {
   "name": "test-app",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "description": "test-app",
+  "author": "ekrem yüksel, <ekremyk2@gmail.com>",
   "keywords": [
     "gatsby"
   ],
